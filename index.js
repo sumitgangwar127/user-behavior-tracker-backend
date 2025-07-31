@@ -9,10 +9,11 @@ app.use(express.json());
 
 app.use('/api', eventRoutes);
 
-const MONGO_URI = 'mongodb://localhost:27017/userBehavior';
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+const MONGO_URI = 'mongodb://localhost:27017/UB';
+
+mongoose.connect(MONGO_URI)
   .then(() => {
-    console.log('MongoDB connected');
-    app.listen(5000, () => console.log('Server running on http://localhost:5000'));
+    console.log('✅ MongoDB connected');
+    app.listen(5000, '0.0.0.0', () => console.log('🚀 Server running on http://localhost:5000'));
   })
-  .catch(err => console.error('MongoDB connection failed:', err));
+  .catch(err => console.error(' MongoDB connection failed:', err));
